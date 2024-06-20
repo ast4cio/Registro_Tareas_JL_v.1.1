@@ -18,7 +18,7 @@ class GestorTareas:
             json.dump([tarea.to_dict() for tarea in self.tareas], file, indent=4)
 
     def crear_tarea(self, descripcion, fecha_limite, prioridad, categoria):
-        tarea = Tarea(descripcion, fecha_limite, prioridad, categoria)
+        tarea = Tarea(descripcion, fecha_limite, prioridad, categoria, self.tareas)
         self.tareas.append(tarea)
         self.guardar_tareas()
         return tarea

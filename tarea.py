@@ -1,8 +1,8 @@
 import random
 
 class Tarea:
-    def __init__(self, descripcion, fecha_limite, prioridad, categoria):
-        self.id = self.generar_id()
+    def __init__(self, descripcion, fecha_limite, prioridad, categoria, tareas_existentes):
+        self.id = self.generar_id_unico(tareas_existentes)
         self.descripcion = descripcion
         self.fecha_limite = fecha_limite
         self.prioridad = prioridad
@@ -25,7 +25,8 @@ class Tarea:
             descripcion=data['descripcion'],
             fecha_limite=data['fecha_limite'],
             prioridad=data['prioridad'],
-            categoria=data['categoria']
+            categoria=data['categoria'],
+            tareas_existentes=[]
         )
         tarea.id = data['id']
         tarea.estado = data['estado']
