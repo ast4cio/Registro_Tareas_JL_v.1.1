@@ -1,4 +1,4 @@
-from datetime import datetime
+import random
 
 class Tarea:
     def __init__(self, descripcion, fecha_limite, prioridad, categoria):
@@ -10,8 +10,11 @@ class Tarea:
         self.estado = 'pendiente'
 
     @staticmethod
-    def generar_id():
-        return int(datetime.now().timestamp() * 1000)
+    def generar_id_unico(tareas_existentes):
+        while True:
+            id_generado = random.randint(10000, 99999)
+            if not any(tarea.id == id_generado for tarea in tareas_existentes):
+                return id_generado
 
     def to_dict(self):
         return self.__dict__
